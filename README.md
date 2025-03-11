@@ -57,8 +57,14 @@ All Resources MUST consist solely of a valid JSON payload, as defined in [RFC 82
 * Client MAY use this property to determine the most appropriate match for a given search term.
 
 `fallback_image: URL` An image that the Client should respect in the event it is unable to load another media resource, this is in favour of a generic 'broken image' that the Client may otherwise have displayed.
-* Resource MAY contain this property. The value MUST correspond to an `image/*` type and is RECOMMENDED to be either `image/bmp`, `image/jpeg`, `image/png` or `image/gif` to ensure compatibility with all Clients.
+* Resource MAY contain this property. The value MUST correspond to an `image/*` type and is RECOMMENDED to be either `image/bmp`, `image/jpeg` or `image/png` to ensure compatibility with all Clients.
 * Client SHOULD display this image only as a fallback in the event it fails to load the requested media file(s) and/or if all media file(s) are that of an unsupported type.
+* Client MAY support animated image formats.
+
+`banner_image: URL` An image that the Client may use to render a banner-like image (4:1 ratio).
+* Resource MAY contain this property. The value MUST correspond to an `image/*` type and is RECOMMENDED to be either `image/bmp`, `image/jpeg` or `image/png` to ensure compatibility with all Clients.
+* Client MAY display the image.
+* Client MAY support animated image formats.
 
 `media: Array<Object>` An array of objects containing media (image; video; and/or model) files that are used to represent this token. The order of this array is important as the Client should present any supported media resources in that order. 
 * Resource SHOULD provide a list of media resources.

@@ -2,9 +2,9 @@
 
 # Universal Off-Chain Token Metadata Standard
 
-- **Authors:** [Brad Bayliss](mailto:brad@bayliss.co.uk), ... (placeholder)
+- **Authors:** [Brad Bayliss](mailto:brad@bayliss.co.uk)
 - **Status:** Draft
-- **Created:** 2022-XX-XX (placeholder)
+- **Created:** 2025-XX-XX (placeholder)
 - **Reference Implementation:** undefined (placeholder)
 
 ## Abstract
@@ -48,23 +48,17 @@ All Resources MUST consist solely of a valid JSON payload, as defined in [RFC 82
 * Resource MAY supply this property to hint at an external URL related to this token.
 * Client MAY provide a link to this URL.
 
-`group_key: String` An optional, string, that will be used to group tokens with the same value.
-* Resource MAY supply this property to indicate to a Client how to group similar tokens for a given collection.
-* Client SHOULD NOT display this property. Client SHOULD group tokens of the same collection if they have a matching group key. Client MUST NOT group tokens, irrespective of group key, if the collection differs.
-
 `keywords: Array<String>` An array of unique keywords to describe this token.
 * Resource MAY contain this property to help Clients with search functionality better locate their token. It is RECOMMENDED to keep the number of unique keywords to no mare than 20 as Clients are solely responsible for whether keywords may be used and how many are referenced.
 * Client MAY use this property to determine the most appropriate match for a given search term.
 
 `fallback_image: URL` An image that the Client should respect in the event it is unable to load another media resource, this is in favour of a generic 'broken image' that the Client may otherwise have displayed.
 * Resource MAY contain this property. The value MUST correspond to an `image/*` type and is RECOMMENDED to be either `image/bmp`, `image/jpeg` or `image/png` to ensure compatibility with all Clients.
-* Client SHOULD display this image only as a fallback in the event it fails to load the requested media file(s) and/or if all media file(s) are that of an unsupported type.
-* Client MAY support animated image formats.
+* Client SHOULD display this image only as a fallback in the event it fails to load the requested media file(s) and/or if all media file(s) are that of an unsupported type. Client MAY support animated image formats.
 
 `banner_image: URL` An image that the Client may use to render a banner-like image (4:1 ratio).
 * Resource MAY contain this property. The value MUST correspond to an `image/*` type and is RECOMMENDED to be either `image/bmp`, `image/jpeg` or `image/png` to ensure compatibility with all Clients.
-* Client MAY display the image.
-* Client MAY support animated image formats.
+* Client MAY display the image. Client MAY support animated image formats.
 
 `media: Array<Object>` An array of objects containing media (image; video; and/or model) files that are used to represent this token. The order of this array is important as the Client should present any supported media resources in that order. 
 * Resource SHOULD provide a list of media resources.
@@ -78,11 +72,11 @@ All Resources MUST consist solely of a valid JSON payload, as defined in [RFC 82
 * Resource SHOULD supply the corresponding [IANA Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml) associated with the media supplied within the `media[n].url` property.
 * Client MAY use this property to filter media unsupported by the Client or to determine how best to render the media.
 
-`media[n].alt: String` Alternative text used to describe the media.
-* Resource MAY supply a string that describes the media file. It is RECOMMENDED that this property is specified to improve accessibility.
+`media[n].alt: String` Alternative text used to describe the media supplied within the `media[n].url` property.
+* Resource MAY supply a short string that describes the media file. It is RECOMMENDED that this property is specified to improve accessibility.
 * Client SHOULD use this property as a text alternative to the media file.
 
-`attributes: Object<String,Object>` An object containing custom attributes that may be interpreted by the Client.
+`attributes: Object<String,Object<>>` An object containing custom attributes that may be interpreted by the Client.
 * Resource MAY provide a list of attributes that can be optionally displayed by the Client and is a simply key/value pair. The value MAY be an object that itself MUST contain a key named `value`, additional data may be contained within this object.
 * Client MAY parse the attributes to provide a richer experience to the end user.
 
@@ -107,11 +101,10 @@ All Resources MUST consist solely of a valid JSON payload, as defined in [RFC 82
   * `datetime` ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601))
   * `date` ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601))
   * `time` ([ISO 8601](https://en.wikipedia.org/wiki/ISO_8601))
-  * `secret`
   * `url` ([RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986))
   * `hidden`
 * Resource SHOULD provide this property to instruct the Client how to appropriately render this attribute.
-* Client MAY render values for values that it supports. Client MAY determine what attribute types are supported, though MUST  support `string` (as it is the default value if this proeprty is omitted) as well as the `hidden` type. Client SHOULD NOT show the attribute if the type is `hidden`.
+* Client MAY render values for values that it supports. Client MAY determine what attribute types are supported, though MUST support `string` (as it is the default value if this proeprty is omitted) as well as the `hidden` type. Client SHOULD NOT show the attribute if the type is `hidden`.
 
 `meta: Object` Meta about this Resource.
 * Resource MUST supply this property as it serves as a hint that the Resource is compliant with the Token Metadata Standard.
@@ -159,8 +152,6 @@ If the Client is aware of a better suited Resource for the end-user, the alterna
 `MediaType`: any assigned [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml) by the Internet Assigned Numbers Authority (IANA).
 
 ## Examples
-
-You can use the [Metadata Debugger](https://metadatadebugger.com) (placeholder url) tool to view, manage, and create metadata that conforms with this standard.
 
 <details>
   <summary>Basic Sword: A very simple metadata file.</summary>
@@ -250,28 +241,6 @@ You can use the [Metadata Debugger](https://metadatadebugger.com) (placeholder u
 	}
 }
   ```
-</details>
- 
-<details>
-  <summary>Reaper: A dense metadata file, containing localization.</summary>
-  
-  [View in Debugger](https://metadatadebugger.com/examples/reaper) (placeholder url)
-  
-  <details>
-   <summary>en.json</summary>
-   
-   ```json
-   {}
-   ```
-  </details>
-  
-  <details>
-   <summary>es.json</summary>
-   
-   ```json
-   {}
-   ```
-  </details>
 </details>
 
 ## References

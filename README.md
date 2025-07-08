@@ -5,7 +5,6 @@
 - **Authors:** [Brad Bayliss](mailto:brad@bayliss.co.uk)
 - **Status:** Draft
 - **Created:** 2025-XX-XX (placeholder)
-- **Reference Implementation:** undefined (placeholder)
 
 ## Abstract
 
@@ -154,93 +153,458 @@ If the Client is aware of a better suited Resource for the end-user, the alterna
 ## Examples
 
 <details>
-  <summary>Basic Sword: A very simple metadata file.</summary>
+  <summary>Basic Sword: A very simple metadata file containing the absolute minimum.</summary>
+
+  Featuring only a `name`, this is the absolute minimum a metadata resource file complying with this standard can contain.
   
-  [View in Debugger](https://metadatadebugger.com/examples/basic-sword) (placeholder url)
+  [View Example Token](https://nft.io/asset/4319-1) · [View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/basic-sword.json)
+  
 
   ```json
 {
 	"name": "Basic Sword",
-	"media": [
-		{
-			"uri": "https://metadatadebugger.com/token/1/basic-sword.jpg",
-			"type": "image/jpeg"
-		}
-	],
 	"meta": {
-		"version": 1
+		"version": 1.0
 	}
 }
   ```
 </details>
- 
+
 <details>
-  <summary>Excalibur: A richly formatted metadata file.</summary>
+  <summary>Bronze Sword: A simple metadata file containing a name, description and image.</summary>
+
+  This would be the most typical form of metadata resource file. It features not just a name and a brief description, but also an image.
   
-  [View in Debugger](https://metadatadebugger.com/examples/excalibur) (placeholder url)
+  [View Example Token](https://nft.io/asset/4319-2) · [View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/bronze-sword.json)
   
+
   ```json
 {
-	"name": "Excalibur",
-	"description": "A legendary sword wielded by King Arthur, entitling rightful sovereignty of Britain.",
-	"fallback_image": "https://metadatadebugger.com/token/2/excalibur-fallback.jpg",
+	"name": "Bronze Sword",
+	"description": "A simple bronze sword.",
 	"media": [
 		{
-			"uri": "https://metadatadebugger.com/token/2/excalibur-sword.png",
-			"alt": "Image of the excalibur sword",
-			"type": "image/jpeg"
-		},
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/bronze-sword.png",
+			"type": "image/png"
+		}
+	],
+	"meta": {
+		"version": 1.0
+	}
+}
+  ```
+</details>
+
+<details>
+  <summary>Iron Sword: Inclusion of a custom fallback image.</summary>
+
+  A fallback image is optionally rendered by the client. This allows the resource creator to define how the token should be display whilst it's loading or upon the failure to load any media.
+  
+  [View Example Token](https://nft.io/asset/4319-3) · [View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/iron-sword.json)
+  
+
+  ```json
+{
+	"name": "Iron Sword",
+	"description": "A robust sword, made out of iron.",
+	"fallback_image": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/iron-sword.fallback.jpg",
+	"media": [
 		{
-			"uri": "https://metadatadebugger.com/token/2/excalibur-sword-swing.mp4",
-			"alt": "Video of the excalibur sword being swung",
-			"type": "video/mp4"
-		},
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/iron-sword.png",
+			"type": "image/png",
+			"alt": "A sword made out of iron."
+		}
+	],
+	"meta": {
+		"version": 1.0
+	}
+}
+  ```
+</details>
+
+<details>
+  <summary>Steel Sword: Introducing attributes and keywords.</summary>
+
+  The introduction of attributes allows richer data to be presented by the Client. Further, adding keywords can assist in searching for the token. Also, the inclusion of `meta.language` assists in identifying the source language of the metadata file, helpful for automatic translations.
+  
+  [View Example Token](https://nft.io/asset/4319-4) · [View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/steel-sword.json)
+  
+
+  ```json
+{
+	"name": "Steel Sword",
+	"description": "A sharp and incredibly strong sword, forged out of steel.",
+	"fallback_image": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/steel-sword.fallback.jpg",
+	"keywords": ["weapon", "sword", "steel", "steel sword", "steel weapon"],
+	"media": [
 		{
-			"uri": "https://metadatadebugger.com/token/2/excalibur-sword-swing.mp3",
-			"alt": "Audio of the excalibur sword whoosh",
-			"type": "audio/mpeg"
-		},
-		{
-			"uri": "ipfs://ipfs/resource-hash",
-			"alt": "3d-model of the excalibur sword, modeled to scale.",
-			"type": "model/stl"
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/steel-sword.png",
+			"type": "image/png",
+			"alt": "A sword made out of steel."
 		}
 	],
 	"attributes": {
-		"id": {
-			"value": "90057b9c-0541-4ff7-971a-054a0f769bb6",
-			"visible": false
+		"type": {
+			"value": "Weapon",
+			"type": "string"
 		},
-		"required_lvl": {
-			"display_name": "Level Requirement",
-			"value": 100
+		"subtype": {
+			"value": "Sword",
+			"type": "string"
 		},
-		"dps": {
-			"display_name": "Damage Per Second",
-			"display_value": "1,000",
-			"value": 1000
-		},
-		"Hint": {
-			"value": "It's just a sword."
+		"material": {
+			"value": "Steel",
+			"type": "string"
 		}
 	},
 	"meta": {
-		"version": 1,
+		"version": 1.0,
+		"language": "en"
+	}
+}
+  ```
+</details>
+
+<details>
+  <summary>Tungsten Sword: Custom display names and values for attributes, different attribute types and reference to an external website.</summary>
+
+  The use of `external_url` allows the resource creator to define a custom link that the Client may render to allow users to find out more details about a token. The use of custom attribute types allows for better Client handling and providing string values for `display_name` and `display_value` within the attribute allows overriding how the attribute appears.
+  
+  [View Example Token](https://nft.io/asset/4319-5) · [View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/tungsten-sword.json)
+  
+
+  ```json
+{
+	"name": "Tungsten Sword",
+	"description": "A sharp and incredibly strong sword, forged out of tungsten.",
+	"fallback_image": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/tungsten-sword.fallback.jpg",
+	"external_url": "https://github.com/enjin/universal-metadata-standard",
+	"keywords": ["weapon", "sword", "tungsten", "tungsten sword", "tungsten weapon"],
+	"media": [
+		{
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/tungsten-sword.png",
+			"type": "image/png",
+			"alt": "A sword made out of tungsten."
+		}
+	],
+	"attributes": {
+		"type": {
+			"value": "weapon",
+			"type": "hidden"
+		},
+		"subtype": {
+			"display_name": "Weapon Type",
+			"display_value": "Sword",
+			"value": "sword",
+			"type": "string"
+		},
+		"material": {
+			"display_name": "Weapon Material",
+			"display_value": "Weapon",
+			"value": "tungsten",
+			"type": "string"
+		},
+		"grade": {
+			"display_name": "Weapon Grade",
+			"display_value": "IV",
+			"value": 4,
+			"type": "integer"
+		},
+		"is_broken": {
+			"display_name": "Broken",
+			"value": false,
+			"type": "boolean"
+		},
+		"forged_at": {
+			"display_name": "Forged",
+			"value": "2018-06-22T10:08:51",
+			"type": "datetime"
+		}
+	},
+	"meta": {
+		"version": 1.0,
+		"language": "en"
+	}
+}
+  ```
+</details>
+
+<details>
+  <summary>Elven Sword: A localized metadata resource file.</summary>
+
+  By specifying `meta.alternate`, this seemingly simply file now supports internationalization (i18n), allowing for the first time a metadata resource file to be rendered by the Client in multiple languages. This includes also customizing the attributes and media files that are displayed.
+  
+  [View Example Token](https://nft.io/asset/4319-6)
+  
+
+`en` English ([View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en.json))
+  ```json
+{
+	"name": "Elven Sword",
+	"description": "A magical blade, rumoured to hold enchanted powers, forged by the Elven Gods.",
+	"fallback_image": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.fallback.jpg",
+	"external_url": "https://github.com/enjin/universal-metadata-standard",
+	"keywords": ["weapon", "sword", "elven", "elven sword", "elven weapon"],
+	"media": [
+		{
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.en.png",
+			"type": "image/png",
+			"alt": "FOR GLORY FOR GOD"
+		},
+		{
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.png",
+			"type": "image/png",
+			"alt": "A magic sword crafted by the elves."
+		}
+	],
+	"attributes": {
+		"type": {
+			"value": "weapon",
+			"type": "hidden"
+		},
+		"subtype": {
+			"display_name": "Weapon Type",
+			"display_value": "Sword",
+			"value": "sword",
+			"type": "string"
+		},
+		"material": {
+			"display_name": "Weapon Material",
+			"display_value": "Weapon",
+			"value": "elven",
+			"type": "string"
+		},
+		"grade": {
+			"display_name": "Weapon Grade",
+			"display_value": "X",
+			"value": 10,
+			"type": "integer"
+		},
+		"is_broken": {
+			"display_name": "Broken",
+			"value": false,
+			"type": "boolean"
+		},
+		"forged_at": {
+			"display_name": "Forged",
+			"value": "2018-06-22T10:08:51",
+			"type": "datetime"
+		}
+	},
+	"meta": {
+		"version": 1.0,
 		"language": "en",
 		"alternate": {
-			"en": "https://metadatadebugger.com/token/2.json",
-			"en-GB": "https://metadatadebugger.com/token/2/en_gb.json",
-			"es": "https://metadatadebugger.com/token/2/es.json",
-			"es-MX": "https://metadatadebugger.com/token/2/es_mx.json",
-			"jp": "https://metadatadebugger.com/token/2/jp.json",
-			"it": "https://metadatadebugger.com/token/2/it.json",
-			"fr": "https://fr.metadatadebugger.com/actif/2.json",
-			"de": "https://de.metadatadebugger.com/anlage/2.json",
-			"zh": "https://cn.metadatadebugger.com/资产/2.json"
+			"en": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en.json",
+			"en-US": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en_us.json",
+			"it": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.it.json",
+			"ja": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.ja.json"
 		}
 	}
 }
   ```
+  
+
+`en` English (US) ([View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en_us.json))
+  ```json
+{
+    "name": "Elven Sword",
+    "description": "A magical blade, rumored to hold enchanted powers, forged by the Elven Gods.",
+    "fallback_image": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.fallback.jpg",
+    "external_url": "https://github.com/enjin/universal-metadata-standard",
+    "keywords": ["weapon", "sword", "elven", "elven sword", "elven weapon"],
+    "media": [
+		{
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.en.png",
+			"type": "image/png",
+			"alt": "FOR GLORY FOR GOD"
+		},
+		{
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.png",
+			"type": "image/png",
+			"alt": "A magic sword crafted by the elves."
+		}
+    ],
+    "attributes": {
+        "type": {
+            "value": "weapon",
+            "type": "hidden"
+        },
+        "subtype": {
+            "display_name": "Weapon Type",
+            "display_value": "Sword",
+            "value": "sword",
+            "type": "string"
+        },
+        "material": {
+            "display_name": "Weapon Material",
+            "display_value": "Weapon",
+            "value": "elven",
+            "type": "string"
+        },
+        "grade": {
+            "display_name": "Weapon Grade",
+            "display_value": "X",
+            "value": 10,
+            "type": "integer"
+        },
+        "is_broken": {
+            "display_name": "Broken",
+            "value": false,
+            "type": "boolean"
+        },
+        "forged_at": {
+            "display_name": "Forged",
+            "value": "2018-06-22T10:08:51",
+            "type": "datetime"
+        }
+    },
+    "meta": {
+        "version": 1.0,
+        "language": "en-US",
+        "alternate": {
+            "en": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en.json",
+            "en-US": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en_us.json",
+            "it": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.it.json",
+            "ja": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.ja.json"
+        }
+    }
+}
+  ```
+
+`it` Italian ([View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.it.json))
+```json
+{
+    "name": "Spada Elfica",
+    "description": "Una lama magica, si dice che possieda poteri incantati, forgiata dagli Dei Elfici.",
+    "fallback_image": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.fallback.jpg",
+    "external_url": "https://github.com/enjin/universal-metadata-standard",
+    "keywords": ["arma", "spada", "elfica", "spada elfica", "arma elfica"],
+    "media": [
+        {
+            "url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.it.png",
+            "type": "image/png",
+            "alt": "PER LA GLORIA DI DIO"
+        },
+		{
+			"url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.png",
+			"type": "image/png",
+			"alt": "Una spada magica forgiata dagli elfi."
+		}
+    ],
+    "attributes": {
+        "type": {
+            "value": "arma",
+            "type": "hidden"
+        },
+        "subtype": {
+            "display_name": "Tipo di Arma",
+            "display_value": "Spada",
+            "value": "spada",
+            "type": "string"
+        },
+        "material": {
+            "display_name": "Materiale dell'Arma",
+            "display_value": "Elfica",
+            "value": "elfica",
+            "type": "string"
+        },
+        "grade": {
+            "display_name": "Grado dell'Arma",
+            "display_value": "X",
+            "value": 10,
+            "type": "integer"
+        },
+        "is_broken": {
+            "display_name": "Rottura",
+            "value": false,
+            "type": "boolean"
+        },
+        "forged_at": {
+            "display_name": "Forgiata il",
+            "value": "2018-06-22T10:08:51",
+            "type": "datetime"
+        }
+    },
+    "meta": {
+        "version": 1.0,
+        "language": "it",
+        "alternate": {
+            "en": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en.json",
+            "en-US": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en_us.json",
+            "it": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.it.json",
+            "ja": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.ja.json"
+        }
+    }
+}
+```
+
+`ja`  Japanese ([View JSON](https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.ja.json))
+```json
+{
+    "name": "エルフの剣",
+    "description": "魔法の力を秘めていると噂される、エルフの神々によって鍛えられた魔剣。",
+    "fallback_image": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.fallback.jpg",
+    "external_url": "https://github.com/enjin/universal-metadata-standard",
+    "keywords": ["武器", "剣", "エルフ", "エルフの剣", "エルフの武器"],
+    "media": [
+        {
+            "url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.ja.png",
+            "type": "image/png",
+            "alt": "神の栄光のために"
+        },
+        {
+            "url": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/media/metadata-standard-examples/elven-sword.png",
+            "type": "image/png",
+            "alt": "エルフによって鍛えられた魔法の剣。"
+        }
+    ],
+    "attributes": {
+        "type": {
+            "value": "武器",
+            "type": "hidden"
+        },
+        "subtype": {
+            "display_name": "武器の種類",
+            "display_value": "剣",
+            "value": "剣",
+            "type": "string"
+        },
+        "material": {
+            "display_name": "武器の材質",
+            "display_value": "エルフ製",
+            "value": "エルフ",
+            "type": "string"
+        },
+        "grade": {
+            "display_name": "武器の等級",
+            "display_value": "X",
+            "value": 10,
+            "type": "integer"
+        },
+        "is_broken": {
+            "display_name": "破損状態",
+            "value": false,
+            "type": "boolean"
+        },
+        "forged_at": {
+            "display_name": "鍛造日",
+            "value": "2018-06-22T10:08:51",
+            "type": "datetime"
+        }
+    },
+    "meta": {
+        "version": 1.0,
+        "language": "ja",
+        "alternate": {
+            "en": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en.json",
+            "en-US": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.en_us.json",
+            "it": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.it.json",
+            "ja": "https://platform.production.enjinusercontent.com/enterprise/enjin/assets/metadata/metadata-standard-examples/elven-sword.ja.json"
+        }
+    }
+}
+```
 </details>
 
 ## References

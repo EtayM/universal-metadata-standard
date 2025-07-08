@@ -1,10 +1,8 @@
-**[ DRAFT REVISION ]**
-
 # Universal Off-Chain Token Metadata Standard
 
 - **Authors:** [Brad Bayliss](mailto:brad@bayliss.co.uk)
 - **Status:** Draft
-- **Created:** 2025-XX-XX (placeholder)
+- **Created:** 2025-07-08
 
 ## Abstract
 
@@ -12,13 +10,13 @@ This document defines the structure of a Metadata Resource File which is used to
 
 ## Motivation
 
-_[[ describe details about The Metaverse ]]_ (placeholder)
+The Metaverse is a network of linked virtual worlds where you can take your avatar, friends, and digital items anywhere you go. Because these worlds run on open blockchains, you own your identity and belongings, can trade or build with anyone, and help set the rules together, letting people connect and create on equal terms across the globe.
 
-The issue that currently plagues both token creators and application developers is the way in which the Metadata Resource File is structured. A lack of a well-defined standard means that token creators are left to interpret how these files should be formatted, and this is often done by referencing existing documentation materials or existing tokens. The lack of a standard also leaves application developers struggling to natively support all tokens, which leads to complications towards working to the goal of _The Metaverse_. This standard details the specifics required to ensure universal compatibility for all applications, and so that token creators can be reassured their tokens will be presented to the end-user in a manner that they expect.
+The issue that currently plagues both token creators and application developers is the way in which the Metadata Resource File is structured. A lack of a well-defined standard means that token creators are left to interpret how these files should be formatted, and this is often done by referencing existing documentation materials or existing tokens. The lack of a standard also leaves application developers struggling to natively support all tokens, which leads to complications towards working to the goal of _The Metaverse_. This standard details the specifics required to ensure universal compatibility for all applications, and so that token creators can be reassured their tokens will be presented to the end-user in a manner that they expect irrespective of the device, browser, or application used to view the tokens.
 
-This standard also focuses on allowing **everyone** to partake in _The Metaverse_ by ensuring that accessibility and internationalisation are equally well defined from the very start.
+This standard also focuses on allowing **everyone** to partake in _The Metaverse_ by ensuring that accessibility and internationalisation are equally well defined from the very start, something current attempts have failed to achieve.
 
-Finally, the concept of _The Metaverse_ is one that changes day-by-day. It is for that reason that this standard is upgradeable to allow for the standard to periodically be upgraded to meet the everchanging demands of _The Metaverse_.
+Finally, the concept of _The Metaverse_ is one that changes day-by-day. It is for that reason that this standard is upgradeable to allow for the standard to periodically be upgraded to meet the everchanging demands of _The Metaverse_. This is achieved through incrementing the `meta.version` property, defined later herein.
 
 ## Terminology
 
@@ -607,14 +605,6 @@ If the Client is aware of a better suited Resource for the end-user, the alterna
 ```
 </details>
 
-## References
-
-placeholder
-
 ## Copyright
 
-_Current version is **properietary**._
-
-(placeholder - needs waiving once we're ready to publish the draft)
-
-**[ DRAFT REVISION ]**
+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt).

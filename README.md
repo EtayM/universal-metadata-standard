@@ -124,6 +124,15 @@ All Resources MUST consist solely of a valid JSON payload, as defined in [RFC 82
 * Resource MAY include this property to indicate the contents of this Resource are potentially sensitive to certain audiences. It is RECOMMENDED to include this whenever the creator is aware that the Resource may be deemed sensitive.
 * Client SHOULD take appropriate steps to safeguard their end-users when a token has identified itself as being potentially sensitive. The Client MAY determine which themes warrant safeguarding based on their target audience.
 
+`meta.visibility: String` Indicates the desired display status of the token, allowing creators to signal to clients whether it should be publicly discoverable.
+
+* Supported Values:
+  * `visible` (default): The token should be displayed in all contexts.
+  * `unlisted`: The token SHOULD NOT be displayed in public galleries, marketplaces, or search results. Clients MAY still render the token if it is accessed via a direct link.
+  * `hidden`: The token SHOULD NOT be displayed under any circumstances.
+* Resource MAY provide this property. If this property is omitted, Clients SHOULD treat the token as `visible`.
+* Client SHOULD respect this property to determine the token's visibility.
+
 `meta.language: Language` The language associated with this Resource.
 * Resource SHOULD contain this property to indicate the language of this Resource.
 * Client MAY display this property.
